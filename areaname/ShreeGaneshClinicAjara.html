@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्री गणेश क्लिनिक, आजरा  - Business Details</title>
+    <meta name="description" content="&lt;p&gt;आमच्या हॉस्पिटलमध्ये डायबेटिस वरील उपचार सुविधा उपलब्ध आहेत.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;उपलब्ध सुविधा -&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;मधुमेह निदान व संपुर्ण उपचार&lt;/li&gt;&lt;li&gt;मधुमेह दुष्परीणाम उपचार&lt;/li&gt;&lt;li&gt;मधुमेह आहार, व्यायाम याविषयी सल्ला व मार्गदर्शन&lt;/li&gt;&lt;li&gt;मधुमेह टाळण्यासाठी प्रतिबंधात्मक उपाय व मार्गदर्शन&lt;/li&gt;&lt;li&gt;24×7 इमरजेंसी सुविधा&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Dr. Ram Jadhav&lt;/p&gt;&lt;p&gt;Qualification - M.D. &lt;/p&gt;&lt;p&gt;Registration No. A44552M&lt;/p&gt;">
+    <meta property="og:image" content="https://sitebizd.github.io/city/assets/images/ShreeGaneshClinicAjarap1.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .card {
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .header {
+            background: blue;
+            padding: 40px 0 50px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            position: relative;
+        }
+        .Business-Photo-1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;  
+  border: none;    
+}
+
+.Business-Photo-1.show {
+  display: block;
+  border: 4px solid white;  
+}
+
+        .name {
+            margin-top: 80px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .business-name {
+            margin-top: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            color: blue;
+        }
+        .business-address, .business-description {
+            width: 80%;
+            margin: 10px auto;
+			margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .business-address {
+            text-align: center;
+        }
+        .business-description {
+            text-align: left;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .call {
+            background: blue;
+            color: white;
+        }
+        .whatsapp {
+            background: green;
+            color: white;
+        }
+        .download {
+            background: blue;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .social-icons {
+            background: blue;
+            padding: 10px;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .social-icon {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            width: 20%;
+        }
+        .social-icon i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+		.photo-card {
+      width: 90%;
+      max-width: 800px;
+      background: white;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: none;  
+    }
+
+    .photo-card img {
+      width: 100%;
+      border-radius: 15px;
+      border: 4px solid white;
+    }
+
+    .photo-caption {
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: black;
+    }
+
+     
+    .photo-card.show {
+      display: block;
+    }
+		.hairline-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .hairline {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #ccc;
+            margin: 0 10px;
+        }
+        .pro-title {
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+		.container {
+		width: 90%;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .card.vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+    }
+
+    .dropdown {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        #festivalSelect {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .festival-banner {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background-color: #f0f0f0;
+            border-radius: 0px;
+            overflow: hidden;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .festival-banner img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: block;
+        }
+        .festival-details {
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .festival-details h2,
+        .festival-details h3,
+        .festival-details strong {
+            margin: 5px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .buttonFB {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    flex-grow: 1;
+    box-sizing: border-box;
+    text-decoration: bold;
+    text-align: center;
+    align-items: center;  
+    justify-content: center;  
+    gap: 5px;  
+}
+
+.buttonFB i {  
+    font-size: 1.3em;  
+}
+        .buttonFB:hover {
+            background-color: darkblue;
+        }
+        .share-button {
+            background-color: green;
+        }
+        .share-button:hover {
+            background-color: darkgreen;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+        .festival-details .icon {
+            margin-right: 5px;
+        }
+        .non-clickable {
+            background-color: black;
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: inline-block;
+            pointer-events: none;
+            color: white;
+            margin-top: 10px !important;
+        }
+        .non-clickable .icon {
+            color: white;
+            margin-right: 5px;
+        }
+        @media (max-width: 360px) {
+            .social-icon {
+                width: 45%;
+            }
+			.button-container {
+                flex-direction: column;
+            }
+            .buttonFB, .share-button {
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="Business-Photo-1" id="businessPhoto1"></div>
+
+        </div>
+        <div class="name">Dr. Ram Jadhav</div>
+        <div class="business-name">श्री गणेश क्लिनिक, आजरा </div>
+        <p class="business-address">44, Ramdev Colony, Ajara</p>
+		
+		<div class="hairline-container">
+        <div class="hairline"></div>
+        <div class="pro-title">///</div>
+        <div class="hairline"></div></div>
+		
+       <p class="business-description" id="businessDescription"></p>
+        <div class="buttons"><a href="#" id="downloadVCF" class="download"><i class="fas fa-download"></i> Download VCF</a></div>
+        <div class="buttons">
+            <a href="tel:9966330055" class="button call"><i class="fas fa-phone"></i> Call</a>
+            <a href="https://wa.me/885505522" class="button whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+        <div class="social-icons">
+                                                        </div>
+    </div>
+	
+	
+	<div class="photo-card" id="photoCard1">
+    <img src="https://sitebizd.github.io/city/assets/images/ShreeGaneshClinicAjarap2.png" alt="Business Photo 1">
+    <div class="photo-caption">श्री गणेश क्लिनिक, आजरा </div>
+  </div>
+
+  <div class="photo-card" id="photoCard2">
+    <img src="" alt="Business Photo 2">
+    <div class="photo-caption">श्री गणेश क्लिनिक, आजरा </div>
+  </div>
+
+  <div class="photo-card" id="photoCard3">
+    <img src="" alt="Business Photo 3"> 
+    <div class="photo-caption">श्री गणेश क्लिनिक, आजरा </div>
+  </div>
+	
+	
+	
+	
+	
+	<div class="card vertical">
+    <div class="dropdown">
+        <select id="festivalSelect" onchange="updateFestivalBanner()">
+            <option value="" disabled selected>Select a Festival</option>
+            <option value="NewYear|https://sitebizd.github.io/bizimages/assets/images/SmartClassesp4.png|#FFA500|नवीन वर्षाच्या हार्दिक शुभेच्छा|शुभेच्छुक">New Year</option>
+            <option value="MakarSankranti|https://example.com/MakarSankranti.jpg|#FFFF00|Happy Makar Sankranti|Warm Wishes">Makar Sankranti</option>
+            <option value="RepublicDay|https://example.com/Republic.jpg|#0000FF|Happy Republic Day|Jai Hind">Republic Day</option>
+            <option value="GaneshChaturthi|https://example.com/Chaturthi.jpg|#FFA500|Happy Ganesh Chaturthi|Blessings of Lord Ganesha">Ganesh Chaturthi</option>
+            <option value="Dasara|https://example.com/Dasara.jpg|#800080|Happy Dasara|Vijayadashami Greetings">Dasara</option>
+            <option value="Diwali|https://example.com/Diwali.jpg|#FFD700|Happy Diwali|Shubh Deepavali">Diwali</option>
+        </select>
+    </div>
+
+        <div id="festivalBanner" class="festival-banner">
+            <img id="festivalImage" src="" alt="Festival Image">
+            <div class="festival-details">
+			<h3 id="messageLine1"></h3>
+            <strong id="messageLine2"></strong>
+                <h2>श्री गणेश क्लिनिक, आजरा </h2>
+                <h3>Dr. Ram Jadhav</h3>
+                <strong>Address : 44, Ramdev Colony, Ajara</strong><br>
+                <strong class="non-clickable"><i class="fas fa-phone icon"></i>  9966330055</strong>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="saveBanner" class="buttonFB" onclick="saveBannerAsPng()"> Save Banner</button>
+            <button id="shareBanner" class="buttonFB share-button" style="display: none;" onclick="shareBanner()"><i class="fab fa-whatsapp icon"></i> Share Banner</button>
+        </div>
+    </div>
+
+    <script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('.photo-card').forEach(function (card) {
+        const img = card.querySelector('img');
+        if (!img || !img.src || img.src.trim() === "") return; 
+
+        img.onload = function () {
+          card.classList.add("show");
+        };
+        img.onerror = function () {
+          card.classList.remove("show");
+        };
+
+        
+        if (img.complete && img.naturalWidth > 0) {
+          card.classList.add("show");
+        }
+      });
+    });
+  </script>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const imageUrl = "https:\/\/sitebizd.github.io\/city\/assets\/images\/ShreeGaneshClinicAjarap1.png"; 
+    const div = document.getElementById("businessPhoto1");
+
+    const img = new Image();
+    img.onload = function () {
+      div.style.backgroundImage = `url('${imageUrl}')`;
+      div.classList.add("show"); 
+    };
+    img.onerror = function () {
+      div.style.backgroundImage = "none";
+      div.classList.remove("show");
+      div.style.border = "none"; 
+    };
+    img.src = imageUrl;
+  });
+</script>
+
+  
+	
+<script>
+  
+  var businessDescription = `'\x3cp\x3eआमच्या हॉस्पिटलमध्ये डायबेटिस वरील उपचार सुविधा उपलब्ध आहेत.\x3c\/p\x3e\x3cp\x3e\x3cstrong\x3e\x3cbr\x3e\x3c\/strong\x3e\x3c\/p\x3e\x3cp\x3e\x3cstrong\x3eउपलब्ध सुविधा -\x3c\/strong\x3e\x3c\/p\x3e\x3cul\x3e\x3cli\x3eमधुमेह निदान व संपुर्ण उपचार\x3c\/li\x3e\x3cli\x3eमधुमेह दुष्परीणाम उपचार\x3c\/li\x3e\x3cli\x3eमधुमेह आहार, व्यायाम याविषयी सल्ला व मार्गदर्शन\x3c\/li\x3e\x3cli\x3eमधुमेह टाळण्यासाठी प्रतिबंधात्मक उपाय व मार्गदर्शन\x3c\/li\x3e\x3cli\x3e24×7 इमरजेंसी सुविधा\x3c\/li\x3e\x3c\/ul\x3e\x3cp\x3e\x3cbr\x3e\x3c\/p\x3e\x3cp\x3eDr. Ram Jadhav\x3c\/p\x3e\x3cp\x3eQualification - M.D. \x3c\/p\x3e\x3cp\x3eRegistration No. A44552M\x3c\/p\x3e'`;
+
+  
+  businessDescription = businessDescription.replace(/^'(.*)'$/, "$1");
+
+
+  businessDescription = businessDescription.replace(/<p>\s*<br>\s*<\/p>/g, '');
+ 
+
+  
+  document.getElementById("businessDescription").innerHTML = businessDescription;
+</script>
+    
+	<script>
+      function generateVCF(personName, businessName, mobileNumber, businessAddress, websiteLink) {
+        const vcf = [
+          'BEGIN:VCARD',
+          'VERSION:3.0',
+          `FN:${personName}`,
+          `ORG:${businessName}`,
+          `TEL;TYPE=WORK,VOICE:${mobileNumber}`,
+          `ADR;TYPE=WORK:;;${businessAddress}`,
+          `URL:${websiteLink}`,
+          'END:VCARD'
+        ].join('\n');
+        
+        return 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcf);
+      }
+
+      document.getElementById('downloadVCF').addEventListener('click', function() {
+        const personName = "Dr. Ram Jadhav";
+        const businessName = "श्री गणेश क्लिनिक, आजरा ";
+        const mobileNumber = "9966330055";
+        const businessAddress = "44, Ramdev Colony, Ajara";
+        const websiteLink = "";
+
+        const vcfData = generateVCF(personName, businessName, mobileNumber, businessAddress, websiteLink);
+        const link = document.createElement('a');
+        link.href = vcfData;
+        link.download = 'business.vcf';
+        link.click();
+      });
+	  
+	  
+	
+	</script> 
+	
+	<script>
+        function updateFestivalBanner() {
+            const festivalSelect = document.getElementById('festivalSelect');
+            const selectedValue = festivalSelect.value;
+            const festivalBanner = document.getElementById('festivalBanner');
+            const saveBannerButton = document.getElementById('saveBanner');
+            const shareBannerButton = document.getElementById('shareBanner');
+
+            if (selectedValue) {
+                const [festivalName, festivalImageUrl, backgroundColor, message1, message2] = selectedValue.split('|');
+                document.getElementById('festivalImage').src = festivalImageUrl;
+                festivalBanner.style.display = 'flex';
+                saveBannerButton.style.display = 'inline-block';
+                shareBannerButton.style.display = 'inline-block';
+                festivalBanner.style.backgroundColor = backgroundColor;
+                document.getElementById('messageLine1').textContent = message1;
+                document.getElementById('messageLine2').textContent = message2;
+            } else {
+                festivalBanner.style.backgroundColor = '';
+                festivalBanner.style.display = 'none';
+                saveBannerButton.style.display = 'none';
+                shareBannerButton.style.display = 'none';
+                document.getElementById('festivalImage').src = '';
+                document.getElementById('messageLine1').textContent = '';
+                document.getElementById('messageLine2').textContent = '';
+            }
+        }
+
+        function saveBannerAsPng() {
+            const banner = document.getElementById('festivalBanner');
+
+            if (typeof html2canvas === 'undefined') {
+                console.error("html2canvas is not loaded. Please include it in your HTML.");
+                return;
+            }
+
+            html2canvas(banner, {
+                useCORS: true,
+                scale: 2
+            }).then(function(canvas) {
+                canvas.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'festival_banner.png';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            }).catch(error => {
+                console.error("Error capturing banner:", error);
+            });
+        }
+
+        function shareBanner() {
+            const banner = document.getElementById('festivalBanner');
+
+            if (typeof html2canvas === 'undefined') {
+                console.error("html2canvas is not loaded. Please include it in your HTML.");
+                return;
+            }
+
+            html2canvas(banner, {
+                useCORS: true,
+                scale: 2
+            }).then(function(canvas) {
+                canvas.toBlob(function(blob) {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Festival Banner',
+                            text: 'Check out this awesome festival banner!',
+                            files: [new File([blob], 'festival_banner.png', { type: 'image/png' })],
+                        })
+                        .then(() => console.log('Shared successfully'))
+                        .catch((error) => console.error('Error sharing:', error));
+                    } else {
+                        alert("Web Share API is not supported on your browser. You can save the image and share it manually.");
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = 'festival_banner.png';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
+                });
+            }).catch(error => {
+                console.error("Error capturing banner for sharing:", error);
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	
+	
+</body>
+</html>
