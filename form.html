@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Submission Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .required::after {
+      content: " *";
+      color: red;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .image-upload-status {
+      font-size: 12px;
+      color: green;
+      display: inline-block;
+      margin-left: 5px;
+    }
+    .profile-id {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+  </style>
+ <script>
+    let uploadedImages = {};
+    let isUpdating = false;
+
+    function generateProfileID() {
+      let businessNameEnglish = document.getElementById("businessNameEnglish").value.trim();
+      if (!businessNameEnglish) return;
+
+      google.script.run.withSuccessHandler(function(uniqueID) {
+        document.getElementById("profileID").value = uniqueID;
+      }).generateUniqueProfileID(businessNameEnglish);
+    }
+
+    // Function to handle image selection, validation, compression, and upload
+    function uploadImage(fileInput, imageIndex) {
+      let file = fileInput.files[0];
+      if (!file) return;
+
+      let allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+      if (!allowedTypes.includes(file.type)) {
+        alert("Only JPG, JPEG, and PNG images are allowed.");
+        fileInput.value = ""; 
+        return;
+      }
+
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function(event) {
+        let img = new Image();
+        img.src = event.target.result;
+        img.onload = function() {
+          let compressedDataUrl = compressImage(img, file.type);
+          let base64Data = compressedDataUrl.split(',')[1];
+
+          uploadedImages["image" + imageIndex] = { name: file.name, data: base64Data };
+          document.getElementById("imageStatus" + imageIndex).innerText = "✔ Compressed & Uploaded";
+        };
+      };
+
+      document.getElementById("imageStatus" + imageIndex).innerText = "Compressing & Uploading...";
+    }
+
+    // Function to compress an image to a maximum size of 750 KB
+    function compressImage(img, fileType) {
+      let canvas = document.createElement('canvas');
+      let ctx = canvas.getContext('2d');
+      
+      let maxWidth = 1024;
+      let maxHeight = 1024;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > maxWidth) {
+          height *= maxWidth / width;
+          width = maxWidth;
+        }
+      } else {
+        if (height > maxHeight) {
+          width *= maxHeight / height;
+          height = maxHeight;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      let quality = 0.8;
+      let compressedDataUrl = canvas.toDataURL(fileType, quality);
+
+      let blob = dataURLtoBlob(compressedDataUrl);
+      while (blob.size > 750 * 1024 && quality > 0.3) {
+        quality -= 0.05;
+        compressedDataUrl = canvas.toDataURL(fileType, quality);
+        blob = dataURLtoBlob(compressedDataUrl);
+      }
+
+      return compressedDataUrl;
+    }
+
+    // Function to convert DataURL to Blob
+    function dataURLtoBlob(dataURL) {
+      let byteString = atob(dataURL.split(',')[1]);
+      let mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+      let arrayBuffer = new ArrayBuffer(byteString.length);
+      let uintArray = new Uint8Array(arrayBuffer);
+      for (let i = 0; i < byteString.length; i++) {
+        uintArray[i] = byteString.charCodeAt(i);
+      }
+      return new Blob([arrayBuffer], { type: mimeString });
+    }
+
+        // Function to handle form submission
+    function submitForm() {
+      let formData = {
+        profileID: document.getElementById("profileID").value.trim(),
+        personName: document.getElementById("personName").value,
+        businessName: document.getElementById("businessName").value,
+        businessNameEnglish: document.getElementById("businessNameEnglish").value,
+        businessDescription: document.getElementById("businessDescription").value,
+        businessAddress: document.getElementById("businessAddress").value,
+        marketArea: document.getElementById("marketArea").value,
+        paymentStatus: document.getElementById("paymentStatus").value,
+        verifiedBadges: document.getElementById("verifiedBadges").value,
+        category1: document.getElementById("category1").value,
+        category2: document.getElementById("category2").value,
+        mobileNumber: document.getElementById("mobileNumber").value,
+        whatsappNumber: document.getElementById("whatsappNumber").value,
+        website: document.getElementById("website").value,
+        facebookPage: document.getElementById("facebookPage").value,
+        youtubeChannel: document.getElementById("youtubeChannel").value,
+        instagram: document.getElementById("instagram").value,
+        googleMap: document.getElementById("googleMap").value,
+        ...uploadedImages
+      };
+
+      document.getElementById("submitBtn").innerText = "Submitting... Please wait";
+      document.getElementById("submitBtn").disabled = true;
+
+      google.script.run.withSuccessHandler(function(response) {
+        alert(response.message);
+        resetForm();
+
+        var openButton = document.createElement("button");
+    openButton.innerText = "Open URL";
+    openButton.onclick = function() {
+        window.open("https://sitebizd.github.io/bizimages/business/" + response.profileID, "_blank");
+    };
+    document.getElementById("generatedProfileID").appendChild(openButton);
+      }).submitForm(formData);
+    }
+
+    // Function to reset the form
+    function resetForm() {
+      document.getElementById("businessForm").reset();
+      uploadedImages = {};
+      document.getElementById("submitBtn").innerText = "Submit";
+      document.getElementById("submitBtn").disabled = false;
+      document.getElementById("updateBtn").style.display = "none";
+      document.getElementById("submitBtn").style.display = "inline-block";
+      document.getElementById("generatedProfileID").innerText = "";
+      isUpdating = false;
+    }
+
+    // Function to update business details
+    function updateBusinessDetails() {
+      let formData = {
+        profileID: document.getElementById("profileID").value.trim(),
+        personName: document.getElementById("personName").value,
+        businessName: document.getElementById("businessName").value,
+        businessNameEnglish: document.getElementById("businessNameEnglish").value,
+        businessDescription: document.getElementById("businessDescription").value,
+        businessAddress: document.getElementById("businessAddress").value,
+        marketArea: document.getElementById("marketArea").value,
+        paymentStatus: document.getElementById("paymentStatus").value,
+        verifiedBadges: document.getElementById("verifiedBadges").value,
+        category1: document.getElementById("category1").value,
+        category2: document.getElementById("category2").value,
+        mobileNumber: document.getElementById("mobileNumber").value,
+        whatsappNumber: document.getElementById("whatsappNumber").value,
+        website: document.getElementById("website").value,
+        facebookPage: document.getElementById("facebookPage").value,
+        youtubeChannel: document.getElementById("youtubeChannel").value,
+        instagram: document.getElementById("instagram").value,
+        googleMap: document.getElementById("googleMap").value,
+        ...uploadedImages
+      };
+
+      document.getElementById("updateBtn").innerText = "Updating... Please wait";
+      document.getElementById("updateBtn").disabled = true;
+
+      google.script.run.withSuccessHandler(function(response) {
+        alert(response.message);
+        resetForm();
+
+        var openButton = document.createElement("button");
+    openButton.innerText = "Open URL";
+    openButton.onclick = function() {
+        window.open("https://sitebizd.github.io/bizimages/business/" + response.profileID, "_blank");
+    };
+    document.getElementById("generatedProfileID").appendChild(openButton);
+      }).updateBusiness(formData);
+    }
+
+    // Function to search business by mobile number
+    function searchBusiness() {
+      let searchNumber = document.getElementById("searchNumber").value.trim();
+      if (!searchNumber) return;
+
+      google.script.run.withSuccessHandler(function(results) {
+        let resultList = document.getElementById("resultList");
+        resultList.innerHTML = "";
+        results.forEach(result => {
+          let listItem = document.createElement("li");
+          listItem.innerText = `${result.businessNameEnglish} - ${result.mobileNumber}`;
+          listItem.onclick = () => selectBusiness(result);
+          resultList.appendChild(listItem);
+        });
+      }).searchBusinessByMobile(searchNumber);
+    }
+
+    // Function to select business from search results
+    function selectBusiness(business) {
+      document.getElementById("profileID").value = business.profileID;
+      document.getElementById("personName").value = business.personName;
+      document.getElementById("businessName").value = business.businessName;
+      document.getElementById("businessNameEnglish").value = business.businessNameEnglish;
+      document.getElementById("businessDescription").value = business.businessDescription;
+      document.getElementById("businessAddress").value = business.businessAddress;
+      document.getElementById("marketArea").value = business.marketArea;
+      document.getElementById("paymentStatus").value = business.paymentStatus;
+      document.getElementById("verifiedBadges").value = business.verifiedBadges;
+      document.getElementById("category1").value = business.category1;
+      document.getElementById("category2").value = business.category2;
+      document.getElementById("mobileNumber").value = business.mobileNumber;
+      document.getElementById("whatsappNumber").value = business.whatsappNumber;
+      document.getElementById("website").value = business.website;
+      document.getElementById("facebookPage").value = business.facebookPage;
+      document.getElementById("youtubeChannel").value = business.youtubeChannel;
+      document.getElementById("instagram").value = business.instagram;
+      document.getElementById("googleMap").value = business.googleMap;
+
+      document.getElementById("submitBtn").style.display = "none";
+      document.getElementById("updateBtn").style.display = "inline-block";
+      isUpdating = true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Business Submission Form</h2>
+    <form id="businessForm">
+      <label class="required">Business Name</label>
+      <input type="text" id="businessName" required>
+
+      <label class="required">Write Business Name in English</label>
+      <input type="text" id="businessNameEnglish" required onblur="generateProfileID()">
+
+      <label>Profile ID (Auto-Generated)</label>
+      <input type="text" id="profileID" readonly>
+
+      <label class="required">Person Name</label>
+      <input type="text" id="personName" required>
+
+      <label>Business Description</label>
+      <textarea id="businessDescription"></textarea>
+
+      <label class="required">Business Address</label>
+      <input type="text" id="businessAddress" required>
+
+      <label>Market Area</label>
+      <input type="text" id="marketArea">
+
+      <label>Payment Status</label>
+      <input type="text" id="paymentStatus">
+
+      <label>Verified Badges</label>
+      <input type="text" id="verifiedBadges">
+
+      <label>Category 1</label>
+      <input type="text" id="category1">
+
+      <label>Category 2</label>
+      <input type="text" id="category2">
+
+      <label class="required">Mobile Number</label>
+      <input type="tel" id="mobileNumber" required>
+
+      <label class="required">WhatsApp Number</label>
+      <input type="tel" id="whatsappNumber" required>
+
+      <label>Website</label>
+      <input type="url" id="website">
+
+      <label>Facebook Page</label>
+      <input type="url" id="facebookPage">
+
+      <label>YouTube Channel</label>
+      <input type="url" id="youtubeChannel">
+
+      <label>Instagram</label>
+      <input type="url" id="instagram">
+
+      <label>Google Map</label>
+      <input type="url" id="googleMap">
+
+      <label>Business Photo 1</label>
+      <input type="file" id="image1" accept="image/jpeg, image/jpg, image/png" onchange="uploadImage(this, 1)">
+      <span id="imageStatus1"></span>
+
+      <label>Business Photo 2</label>
+      <input type="file" id="image2" accept="image/jpeg, image/jpg, image/png" onchange="uploadImage(this, 2)">
+      <span id="imageStatus2"></span>
+
+      <label>Business Photo 3</label>
+      <input type="file" id="image3" accept="image/jpeg, image/jpg, image/png" onchange="uploadImage(this, 3)">
+      <span id="imageStatus3"></span>
+
+      <label>Business Photo 4</label>
+            <input type="file" id="image4" accept="image/jpeg, image/jpg, image/png" onchange="uploadImage(this, 4)">
+      <span id="imageStatus4"></span>
+
+      <button type="button" id="submitBtn" onclick="submitForm()">Submit</button>
+      <p id="generatedProfileID" class="profile-id"></p>
+      <button type="button" id="updateBtn" onclick="updateBusinessDetails()" style="display:none;">Update Business</button>
+      <p id="generatedProfileID" class="profile-id"></p>
+
+      <h2>Search Business</h2>
+      <label>Enter Mobile Number</label>
+      <input type="text" id="searchNumber">
+      <button type="button" onclick="searchBusiness()">Search</button>
+      <ul id="resultList"></ul>
+    </form>
+  </div>
+</body>
+</html>
