@@ -350,7 +350,8 @@
         </div>
         <div class="social-icons">
                             <a href="https://web.com" class="social-icon"><i class="fas fa-globe"></i><br>Website</a>
-                                                    <a href="https://yt.com" class="social-icon"><i class="fab fa-youtube"></i><br>YouTube</a>
+                                        <a href="https://gm.com" class="social-icon"><i class="fas fa-map-marker-alt"></i><br>Map</a>
+                                        <a href="https://yt.com" class="social-icon"><i class="fab fa-youtube"></i><br>YouTube</a>
                                         <a href="https://fb.com" class="social-icon"><i class="fab fa-facebook"></i><br>Facebook</a>
                     </div>
     </div>
@@ -640,16 +641,22 @@
     ];
 
     function getYouTubeEmbedCode(url) {
-        let videoId = "";
         if (!url) return "";
 
+        let videoId = "";
+
+        
         if (url.includes("watch?v=")) {
             videoId = url.split("watch?v=")[1].split("&")[0];
-        } else if (url.includes("youtu.be/")) {
+        }
+        
+        else if (url.includes("youtu.be/")) {
             videoId = url.split("youtu.be/")[1].split("?")[0];
         }
 
-        if (!videoId) return "";
+        
+        if (!videoId || videoId.trim() === "") return "";
+
         return `<iframe width="100%" height="315" 
                     src="https://www.youtube.com/embed/${videoId}" 
                     frameborder="0" 
@@ -663,9 +670,14 @@
         let cardId = `ytVideoCard${index+1}`;
         let containerId = `ytVideoContainer${index+1}`;
 
-        if (videoUrl && videoUrl.trim() !== "") {
-            document.getElementById(containerId).innerHTML = getYouTubeEmbedCode(videoUrl);
+        let embedCode = getYouTubeEmbedCode(videoUrl);
+
+        if (embedCode !== "") {
+            document.getElementById(containerId).innerHTML = embedCode;
             document.getElementById(cardId).style.display = "block";
+        } else {
+            
+            document.getElementById(cardId).style.display = "none";
         }
     });
 </script>
