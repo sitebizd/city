@@ -384,7 +384,11 @@
 
   
 	
-	
+<div class="photo-card" id="ytVideoCard" style="display:none;">
+    <div id="ytVideoContainer"></div>
+    <div class="photo-caption">RSd Trading</div>
+</div>
+
 	
 	
 	
@@ -603,6 +607,45 @@
     img.src = imageUrl;
   });
 </script>
+
+
+<script>
+    
+    let YTVideo = "https:\/\/9688552255"; 
+
+    function getYouTubeEmbedCode(url) {
+        let videoId = "";
+
+        if (!url) return "";
+
+        
+        if (url.includes("watch?v=")) {
+            videoId = url.split("watch?v=")[1].split("&")[0];
+        }
+        
+        else if (url.includes("youtu.be/")) {
+            videoId = url.split("youtu.be/")[1].split("?")[0];
+        }
+
+        if (!videoId) return "";
+        return `<iframe width="100%" height="315" 
+                    src="https://www.youtube.com/embed/${videoId}" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>`;
+    }
+
+    // Show video only if link exists
+    if (YTVideo && YTVideo.trim() !== "") {
+        document.getElementById("ytVideoContainer").innerHTML = getYouTubeEmbedCode(YTVideo);
+        document.getElementById("ytVideoCard").style.display = "block";
+    }
+</script>
+
+
+
+
 
   
 	
