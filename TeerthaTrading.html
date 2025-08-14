@@ -147,14 +147,22 @@
             font-size: 20px;
             margin-bottom: 5px;
         }
-		.web-icon {
+		
+		.webmail-icon {
+    display: block;        
+    text-align: center;      
     color: blue;           
     font-weight: bold;     
     text-decoration: none; 
+    margin-bottom: 5px;    
   }
-  .web-icon:hover {
+  .webmail-icon i {
+    margin-right: 5px;     
+  }
+  .webmail-icon:hover {
     text-decoration: underline;  
   }
+		
 		.photo-card {
       width: 90%;
       max-width: 800px;
@@ -351,7 +359,8 @@
         <div class="hairline"></div></div>
 		
        <p class="business-description" id="businessDescription"></p>
-	   <div class="weemail-icons" id="weemailIcons"></div>
+	   
+<div id="webmailLinks"></div>
         <div class="buttons"><a href="#" id="downloadVCF" class="download"><i class="fas fa-download"></i> Download VCF</a></div>
         <div class="buttons">
             <a href="tel:8877441188" class="button call"><i class="fas fa-phone"></i> Call</a>
@@ -359,8 +368,8 @@
         </div>
         <div class="social-icons">
                             <a href="https://web.com" class="social-icon"><i class="fas fa-globe"></i><br>Website</a>
-            			                <a href="mailto:teertha3334@gmail.com" class="social-icon"><i class="fas fa-envelope"></i><br>Email</a>
-                                                    <a href="https://yt.com" class="social-icon"><i class="fab fa-youtube"></i><br>YouTube</a>
+            			
+                                        <a href="https://yt.com" class="social-icon"><i class="fab fa-youtube"></i><br>YouTube</a>
                                         <a href="https://fb.com" class="social-icon"><i class="fab fa-facebook"></i><br>Facebook</a>
                     </div>
     </div>
@@ -382,7 +391,7 @@
   </div>
   
   <div class="photo-card" id="photoCard4">
-    <img src="" alt="Business Photo 4">
+    <img src="https://sitebizd.github.io/city/assets/images/SitaStoresp5.jpg" alt="Business Photo 4">
     <div class="photo-caption">Teertha Trading</div>
   </div>
 
@@ -643,10 +652,10 @@
     
     let videos = [
         "https:\/\/youtu.be\/yI9MC_5mX6A?si=CFS5S_vNNzqd1coR",
-        "",
+        "https:\/\/www.youtube.com\/watch?v=Q_-oU2iD08k\x26t=1s",
         "https:\/\/youtu.be\/FziVPRB6cxA?si=z6fX7AReo-7ud08Y",
         "",
-        "",
+        "https:\/\/youtu.be\/eOEYYTrlEG0?si=UjsciooPldUndSJJ",
     ];
 
     function getYouTubeEmbedCode(url) {
@@ -693,7 +702,24 @@
 
 
 
+<script>
 
+  const emailID = "teertha3334@gmail.com"; 
+
+  let htmlContent = "";
+
+ 
+
+  if (emailID) {
+    htmlContent += `
+      <a href="mailto:${emailID}" class="webmail-icon">
+        <i class="fas fa-envelope"></i> Email: ${emailID}
+      </a>
+    `;
+  }
+
+  document.getElementById("webmailLinks").innerHTML = htmlContent;
+</script>
 
   
 	
@@ -745,26 +771,6 @@
 	  
 	
 	</script> 
-	
-	
-	<script>
-  const websiteLink = "https:\/\/web.com";
-  const emailID = "teertha3334@gmail.com";
-
-  if (websiteLink) {
-    document.getElementById("weemailIcons").innerHTML +=
-      `<a href="${websiteLink}" class="weemail-icon" target="_blank">
-         <i class="fas fa-globe"></i><br>Website
-       </a>`;
-  }
-
-  if (emailID) {
-    document.getElementById("weemailIcons").innerHTML +=
-      `<a href="mailto:${emailID}" class="weemail-icon">
-         <i class="fas fa-envelope"></i><br>Email
-       </a>`;
-  }
-</script>
 	
 	<script>
         function updateFestivalBanner() {
