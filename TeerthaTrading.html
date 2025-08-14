@@ -133,7 +133,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         .social-icon {
             color: white;
@@ -141,12 +141,20 @@
             text-align: center;
             font-size: 14px;
             font-weight: bold;
-            width: 15%;
+            width: 20%;
         }
         .social-icon i {
             font-size: 20px;
             margin-bottom: 5px;
         }
+		.web-icon {
+    color: blue;           
+    font-weight: bold;     
+    text-decoration: none; 
+  }
+  .web-icon:hover {
+    text-decoration: underline;  
+  }
 		.photo-card {
       width: 90%;
       max-width: 800px;
@@ -343,6 +351,7 @@
         <div class="hairline"></div></div>
 		
        <p class="business-description" id="businessDescription"></p>
+	   <div class="weemail-icons" id="weemailIcons"></div>
         <div class="buttons"><a href="#" id="downloadVCF" class="download"><i class="fas fa-download"></i> Download VCF</a></div>
         <div class="buttons">
             <a href="tel:8877441188" class="button call"><i class="fas fa-phone"></i> Call</a>
@@ -736,6 +745,26 @@
 	  
 	
 	</script> 
+	
+	
+	<script>
+  const websiteLink = "https:\/\/web.com";
+  const emailID = "teertha3334@gmail.com";
+
+  if (websiteLink) {
+    document.getElementById("weemailIcons").innerHTML +=
+      `<a href="${websiteLink}" class="weemail-icon" target="_blank">
+         <i class="fas fa-globe"></i><br>Website
+       </a>`;
+  }
+
+  if (emailID) {
+    document.getElementById("weemailIcons").innerHTML +=
+      `<a href="mailto:${emailID}" class="weemail-icon">
+         <i class="fas fa-envelope"></i><br>Email
+       </a>`;
+  }
+</script>
 	
 	<script>
         function updateFestivalBanner() {
