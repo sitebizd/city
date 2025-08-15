@@ -142,7 +142,7 @@ a:hover {
         .download {
             background: blue;
             color: white;
-            width: 65%;
+            width: 100%;
             margin-top: 0px;
             padding: 14px;
             border-radius: 25px;
@@ -157,24 +157,7 @@ a:hover {
             justify-content: center;
             gap: 10px;
         }
-		.sharebtn {
-            background: blue;
-            color: white;
-            width: 35%;
-            margin-top: 0px;
-            padding: 14px;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+		
         .social-icons {
             background: blue;
             padding: 10px;
@@ -415,7 +398,6 @@ a:hover {
 		
 		<div class="buttons">
             <a href="javascript:void(0)" id="downloadVCF" class="download"><i class="fas fa-download"></i> Save Contact</a>
-            <a href="javascript:void(0)" id="shareBtn" class="sharebtn"><i class="fa-solid fa-share-nodes"></i> Share</a>
         </div>
 	  
         <div class="social-icons" id="socialIcons">
@@ -448,7 +430,7 @@ a:hover {
   </div>
 
   <div class="photo-card" id="photoCard5">
-    <img src="https://sitebizd.github.io/city/assets/images/JayMobilep6.png" alt="Business Photo 5"> 
+    <img src="https://sitebizd.github.io/city/assets/images/JayMobilep6.jpg" alt="Business Photo 5"> 
     <div class="photo-caption">जय मोबाइल, आजरा </div>
   </div>
 
@@ -705,7 +687,7 @@ a:hover {
     let videos = [
         "https:\/\/www.youtube.com\/watch?v=Q_-oU2iD08k\x26t=1s",
         "https:\/\/www.youtube.com\/watch?v=Q_-oU2iD08k\x26t=1s",
-        "",
+        "https:\/\/www.youtube.com\/watch?v=Q_-oU2iD08k\x26t=1s",
         "",
         "",
     ];
@@ -753,31 +735,63 @@ a:hover {
 </script>
 
 
-
 <script>
-  const websiteLink = "https:\/\/web.com";
-  const emailID = "Inhogg@gmail.com";
+const websiteLink = "https:\/\/web.com";
+const emailID = "Inhogg@gmail.com";
 
-  let htmlContent = "";
 
-  if (websiteLink) {
-    htmlContent += `
-      <a href="${websiteLink}" class="WE-icon" target="_blank">
-        <i class="fas fa-globe"></i> Website
-      </a>
-    `;
+let htmlContent = "";
+
+
+if (websiteLink) {
+  htmlContent += `
+    <a href="${websiteLink}" class="WE-icon" target="_blank">
+      <i class="fas fa-globe"></i> Website
+    </a>
+  `;
+}
+
+
+if (emailID) {
+  htmlContent += `
+    <a href="mailto:${emailID}" class="WE-icon">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+  `;
+}
+
+
+htmlContent += `
+  <a href="javascript:void(0)" id="shareBtn" class="WE-icon">
+    <i class="fa-solid fa-share-nodes"></i> Share to Friend
+  </a>
+`;
+
+document.getElementById("WELinks").innerHTML = htmlContent;
+
+
+document.addEventListener("click", async (e) => {
+  if (e.target.closest("#shareBtn")) {
+    const shareData = {
+      title: document.title,
+      text: "जय मोबाइल, आजरा  | Address: Near Star hotel, Main Road Ajara | Contact Number: 8566335588 | Visit: ",
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        console.log("Content shared successfully");
+      } catch (err) {
+        console.error("Sharing failed:", err);
+      }
+    } else {
+      alert("Sharing is not supported on this browser. Copy this link:\n" + window.location.href);
+    }
   }
-
-  if (emailID) {
-    htmlContent += `
-      <a href="mailto:${emailID}" class="WE-icon">
-        <i class="fas fa-envelope"></i> Email
-      </a>
-    `;
-  }
-
-  document.getElementById("WELinks").innerHTML = htmlContent;
+});
 </script>
+
 
   <script>
   
@@ -789,27 +803,7 @@ a:hover {
 
 
 
-<script>
-document.getElementById("shareBtn").addEventListener("click", async () => {
-    const shareData = {
-        title: document.title, 
-        text: "जय मोबाइल, आजरा  | Address: Near Star hotel, Main Road Ajara | Contact Number: 8566335588 | Visit: ", 
-        url: window.location.href 
-    };
 
-    if (navigator.share) {
-        try {
-            await navigator.share(shareData);
-            console.log("Content shared successfully");
-        } catch (err) {
-            console.error("Sharing failed:", err);
-        }
-    } else {
-        
-        alert("Sharing is not supported on this browser. Copy this link:\n" + window.location.href);
-    }
-});
-</script>
 	
 <script>
   
