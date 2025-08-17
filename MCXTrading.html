@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCX Trading  - Business Details</title>
-    <meta name="description" content="&lt;p&gt;ज्ञानाचा खजिना, तुमच्या उंबरठ्यावर!&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;आमच्या वाचनालयात विविध प्रकारची पुस्तके, कादंबरी, नियतकालिके आणि इतर वाचन साहित्य उपलब्ध आहे. आमच्याकडे सर्व वयोगटातील वाचकांसाठी काहीतरी नक्कीच आहे, ज्यात कथा, कविता, नाटक, इतिहास, विज्ञान, कला, आणि बरेच काही समाविष्ट आहे. &lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;&lt;strong&gt;आमची वैशिष्ट्ये - &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;- विस्तृत पुस्तक आणि नियतकालिकांचे संग्रह &lt;/p&gt;&lt;p&gt;- शांत आणि आरामदायी वातावरण &lt;/p&gt;&lt;p&gt;- अनुभवी आणि मदतनीस कर्मचारी &lt;/p&gt;&lt;p&gt;- विविध कार्यक्रम आणि कार्यशाळा &lt;/p&gt;&lt;p&gt;- मुलांसाठी एक विशेष विभाग &lt;/p&gt;&lt;p&gt;- सदस्यत्वाचे अनेक फायदे &lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;आमच्या वाचनालयात आजच नोंदणी करा आणि वाचनाचा आनंद घ्या!&lt;/p&gt;">
+    <meta name="description" content="&lt;p&gt;शेअर मार्केट बरोबरचं SIP, म्युच्युअल फंड आणि गुंतवणूक यावर तज्ञांकडून योग्य सल्ला व मार्गदर्शन मिळेल.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;अधिक माहितीसाठी आजच संपर्क साधा..&lt;/p&gt;">
     <meta property="og:image" content="https://sitebizd.github.io/city/assets/images/MCXTradingp1.jpg">
 
     <link rel="icon" type="image/png" href="https://sitebizd.github.io/city/assets/images/MCXTradingp1.jpg">
@@ -18,7 +18,14 @@
             background-color: #f4f4f4;
             text-align: center;
         }
-        .card {
+		a {
+    text-decoration: none;  
+}
+
+a:hover {
+    text-decoration: none;  
+}
+.card {
             width: 90%;
             max-width: 800px;
             background: white;
@@ -101,16 +108,42 @@
         .call {
             background: blue;
             color: white;
+			margin-top: 5px;
+			padding: 14px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .whatsapp {
             background: green;
             color: white;
+			margin-top: 5px;
+			padding: 14px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .download {
             background: blue;
             color: white;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 0px;
             padding: 14px;
             border-radius: 25px;
             font-size: 18px;
@@ -124,6 +157,7 @@
             justify-content: center;
             gap: 10px;
         }
+		
         .social-icons {
             background: blue;
             padding: 10px;
@@ -147,7 +181,19 @@
             font-size: 20px;
             margin-bottom: 5px;
         }
-		.photo-card {
+		.WE-links {
+		text-align: center;  
+		}
+		.WE-icon {
+		color: blue;          
+    font-weight: bold;    
+    text-decoration: none;
+    margin: 0 10px;       
+  }
+  .WE-icon i {
+    margin-right: 5px;    
+  }
+  .photo-card {
       width: 90%;
       max-width: 800px;
       background: white;
@@ -334,7 +380,7 @@
 
         </div>
         <div class="name">Ramesh Patil</div>
-        <div class="business-name">MCX Trading </div>
+        <div class="business-name"><a href="tel:7498663848">MCX Trading </a></div>
         <p class="business-address">907, Ravalnath Colony, Ajara</p>
 		
 		<div class="hairline-container">
@@ -343,16 +389,22 @@
         <div class="hairline"></div></div>
 		
        <p class="business-description" id="businessDescription"></p>
-        <div class="buttons"><a href="#" id="downloadVCF" class="download"><i class="fas fa-download"></i> Download VCF</a></div>
-        <div class="buttons">
+	   <div id="WELinks" class="WE-links"></div>
+	   
+	   <div class="buttons">
             <a href="tel:7498663848" class="button call"><i class="fas fa-phone"></i> Call</a>
             <a href="https://wa.me/7498663848" class="button whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
-        <div class="social-icons">
-                            <a href="https://web.com" class="social-icon"><i class="fas fa-globe"></i><br>Website</a>
-                                        <a href="https://gm.com" class="social-icon"><i class="fas fa-map-marker-alt"></i><br>Map</a>
+		
+		<div class="buttons">
+            <a href="javascript:void(0)" id="downloadVCF" class="download"><i class="fas fa-download"></i> Save Contact</a>
+        </div>
+	  
+        <div class="social-icons" id="socialIcons">
+                            <a href="https://gm.com" class="social-icon"><i class="fas fa-map-marker-alt"></i><br>Map</a>
                                         <a href="https://yt.com" class="social-icon"><i class="fab fa-youtube"></i><br>YouTube</a>
                                         <a href="https://fb.com" class="social-icon"><i class="fab fa-facebook"></i><br>Facebook</a>
+            			                <a href="https://in.com" class="social-icon"><i class="fab fa-instagram"></i><br>Instagram</a>
                     </div>
     </div>
 	
@@ -386,27 +438,27 @@
 	
 <div class="photo-card" id="ytVideoCard1" style="display:none;">
     <div id="ytVideoContainer1"></div>
-    <div class="photo-caption">MCX Trading </div>
+    <div class="photo-caption">MCX Trading  : Youtube Video</div>
 </div>
 
 <div class="photo-card" id="ytVideoCard2" style="display:none;">
     <div id="ytVideoContainer2"></div>
-    <div class="photo-caption">MCX Trading </div>
+    <div class="photo-caption">MCX Trading  : Youtube Video</div>
 </div>
 
 <div class="photo-card" id="ytVideoCard3" style="display:none;">
     <div id="ytVideoContainer3"></div>
-    <div class="photo-caption">MCX Trading </div>
+    <div class="photo-caption">MCX Trading  : Youtube Video</div>
 </div>
 
 <div class="photo-card" id="ytVideoCard4" style="display:none;">
     <div id="ytVideoContainer4"></div>
-    <div class="photo-caption">MCX Trading </div>
+    <div class="photo-caption">MCX Trading  : Youtube Video</div>
 </div>
 
 <div class="photo-card" id="ytVideoCard5" style="display:none;">
     <div id="ytVideoContainer5"></div>
-    <div class="photo-caption">MCX Trading </div>
+    <div class="photo-caption">MCX Trading  : Youtube Video</div>
 </div>
 
 
@@ -683,14 +735,79 @@
 </script>
 
 
+<script>
+const websiteLink = "https:\/\/web.com";
+const emailID = "";
 
 
+let htmlContent = "";
 
+
+if (websiteLink) {
+  htmlContent += `
+    <a href="${websiteLink}" class="WE-icon" target="_blank">
+      <i class="fas fa-globe"></i> Website
+    </a>
+  `;
+}
+
+
+if (emailID) {
+  htmlContent += `
+    <a href="mailto:${emailID}" class="WE-icon">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+  `;
+}
+
+
+htmlContent += `
+  <a href="javascript:void(0)" id="shareBtn" class="WE-icon">
+    <i class="fa-solid fa-share-nodes"></i> Share
+  </a>
+`;
+
+document.getElementById("WELinks").innerHTML = htmlContent;
+
+
+document.addEventListener("click", async (e) => {
+  if (e.target.closest("#shareBtn")) {
+    const shareData = {
+      title: document.title,
+      text: "MCX Trading  | Address: 907, Ravalnath Colony, Ajara | Contact Number: 7498663848 | Visit: ",
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        console.log("Content shared successfully");
+      } catch (err) {
+        console.error("Sharing failed:", err);
+      }
+    } else {
+      alert("Sharing is not supported on this browser. Copy this link:\n" + window.location.href);
+    }
+  }
+});
+</script>
+
+
+  <script>
   
+  const socialIcons = document.getElementById("socialIcons");
+  if (!socialIcons.querySelector("a")) {
+      socialIcons.style.display = "none";
+  }
+</script>
+
+
+
+
 	
 <script>
   
-  var businessDescription = `'\x3cp\x3eज्ञानाचा खजिना, तुमच्या उंबरठ्यावर!\x3c\/p\x3e\x3cp\x3e \x3c\/p\x3e\x3cp\x3eआमच्या वाचनालयात विविध प्रकारची पुस्तके, कादंबरी, नियतकालिके आणि इतर वाचन साहित्य उपलब्ध आहे. आमच्याकडे सर्व वयोगटातील वाचकांसाठी काहीतरी नक्कीच आहे, ज्यात कथा, कविता, नाटक, इतिहास, विज्ञान, कला, आणि बरेच काही समाविष्ट आहे. \x3c\/p\x3e\x3cp\x3e \x3c\/p\x3e\x3cp\x3e\x3cstrong\x3eआमची वैशिष्ट्ये - \x3c\/strong\x3e\x3c\/p\x3e\x3cp\x3e- विस्तृत पुस्तक आणि नियतकालिकांचे संग्रह \x3c\/p\x3e\x3cp\x3e- शांत आणि आरामदायी वातावरण \x3c\/p\x3e\x3cp\x3e- अनुभवी आणि मदतनीस कर्मचारी \x3c\/p\x3e\x3cp\x3e- विविध कार्यक्रम आणि कार्यशाळा \x3c\/p\x3e\x3cp\x3e- मुलांसाठी एक विशेष विभाग \x3c\/p\x3e\x3cp\x3e- सदस्यत्वाचे अनेक फायदे \x3c\/p\x3e\x3cp\x3e \x3c\/p\x3e\x3cp\x3eआमच्या वाचनालयात आजच नोंदणी करा आणि वाचनाचा आनंद घ्या!\x3c\/p\x3e'`;
+  var businessDescription = `'\x3cp\x3eशेअर मार्केट बरोबरचं SIP, म्युच्युअल फंड आणि गुंतवणूक यावर तज्ञांकडून योग्य सल्ला व मार्गदर्शन मिळेल.\x3c\/p\x3e\x3cp\x3e\x3cbr\x3e\x3c\/p\x3e\x3cp\x3eअधिक माहितीसाठी आजच संपर्क साधा..\x3c\/p\x3e'`;
 
   
   businessDescription = businessDescription.replace(/^'(.*)'$/, "$1");
